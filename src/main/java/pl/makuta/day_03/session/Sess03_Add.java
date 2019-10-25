@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet("/addToSession")
-public class Sees_03Add extends HttpServlet {
+public class Sess03_Add extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");

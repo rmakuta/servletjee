@@ -13,7 +13,7 @@ import java.util.Enumeration;
 import java.util.List;
 
 @WebServlet("/showAllSession")
-public class Sess_03All extends HttpServlet {
+public class Sess03_All extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
