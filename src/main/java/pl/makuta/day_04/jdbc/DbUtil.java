@@ -13,10 +13,12 @@ public class DbUtil {
         Connection conn;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/servletjee?useSSL=false&serverTimezone=UTC", "root", "coderslab");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/servletjee?useSSL=false&characterEncoding" +
+                    "=utf8&serverTimezone=UTC", "root", "coderslab");
             return conn;
         } catch (SQLException | ClassNotFoundException e) {
             logger.error("Błąd połączenia z bazą danych", e);
+            System.out.println("Błąd połączenia z bazą.");
             throw new RuntimeException("Błąd połączenia z bazą danych", e);
         }
     }

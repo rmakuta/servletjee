@@ -1,6 +1,6 @@
 package pl.makuta.day_04.jdbc;
 
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class BookDao {
 
-//    private static final Logger logger = Logger.getLogger(BookDao.class);
+    private static final Logger logger = Logger.getLogger(BookDao.class);
     // ZAPYTANIA SQL
     private static final String CREATE_BOOK_QUERY = "INSERT INTO book(title,author,isbn) VALUES (?,?,?)";
     private static final String DELETE_BOOK_QUERY = "DELETE FROM book where id = ?";
@@ -34,7 +34,7 @@ public class BookDao {
                 }
             }
         } catch (Exception e) {
-//            logger.error("Błąd odczytu książki o id=" + bookId, e);
+            logger.error("Błąd odczytu książki o id=" + bookId, e);
             e.getMessage();
         }
         return book;
@@ -56,7 +56,7 @@ public class BookDao {
                 bookList.add(bookToAdd);
             }
         } catch (SQLException e) {
-//            logger.error("Błąd odczytu wszystkich książek", e);
+            logger.error("Błąd odczytu wszystkich książek", e);
             e.getMessage();
         }
         return bookList;
@@ -74,8 +74,7 @@ public class BookDao {
 
             if (result != 1) {
                 RuntimeException ex = new RuntimeException("Nie udało się utworzyć nowej książki");
-//                logger.error("Błąd tworzenia książki", ex);
-
+                logger.error("Błąd tworzenia książki", ex);
                 throw ex;
             }
 
@@ -85,12 +84,12 @@ public class BookDao {
                     return book;
                 } else {
                     RuntimeException ex = new RuntimeException("Nie utworzono klucza dla książki");
-//                    logger.error("Błąd tworzenia książki", ex);
+                    logger.error("Błąd tworzenia książki", ex);
                     throw ex;
                 }
             }
         } catch (Exception e) {
-//            logger.error("Błąd zapisu książki", e);
+            logger.error("Błąd zapisu książki", e);
         }
         return null;
     }
@@ -104,7 +103,7 @@ public class BookDao {
             int resultsCount = statement.executeUpdate();
             return resultsCount == 1;
         } catch (Exception e) {
-//            logger.error("Błąd usunięcia książki", e);
+            logger.error("Błąd usunięcia książki", e);
             return false;
         }
     }
@@ -119,7 +118,7 @@ public class BookDao {
 
             statement.executeUpdate();
         } catch (Exception e) {
-//            logger.error("Błąd aktualizacji książki", e);
+            logger.error("Błąd aktualizacji książki", e);
         }
     }
 }
