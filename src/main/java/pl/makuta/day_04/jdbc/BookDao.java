@@ -38,7 +38,6 @@ public class BookDao {
             e.getMessage();
         }
         return book;
-
     }
 
     public static List<Book> findAll() {
