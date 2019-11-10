@@ -19,9 +19,6 @@ public class MvcJdbc03 extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
 
         List<Book> books = BookDao.findAll();
-        for (Book b: books){
-            System.out.println(b);
-        }
         req.setAttribute("books", books);
         getServletContext().getRequestDispatcher("/jdbc/books.jsp").forward(req, resp);
     }

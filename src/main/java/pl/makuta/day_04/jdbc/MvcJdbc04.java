@@ -31,6 +31,5 @@ public class MvcJdbc04 extends HttpServlet {
 
         Book book = BookDao.read(Integer.parseInt(req.getParameter("id")));
         resp.getWriter().print("id: " + book.getId() + ", tytuł: " + book.getTitle() + ", autor: " + book.getAuthor() + ", ISBN: " + book.getIsbn());
-
     }
 }
