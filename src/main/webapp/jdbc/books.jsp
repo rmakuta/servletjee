@@ -12,6 +12,15 @@
     <title>Books</title>
 </head>
 <body>
+
+<form action="search-book" method="post">
+    Tytuł: <input type="text" name="search">
+    <input type="submit" value="szukaj"/>
+    <c:if test="${not empty param.isTitle}">
+        Nie ma takiego tytułu!
+    </c:if>
+</form></br>
+
 <table>
     <tr>
         <th>|   ID  |</th>

@@ -29,12 +29,10 @@ public class MvcJdbc05 extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
 
-        Book book = new Book(req.getParameter("title"),
+        BookDao.update(new Book(req.getParameter("title"),
                 req.getParameter("author"),
                 Integer.parseInt(req.getParameter("isbn")),
-                        Integer.parseInt(req.getParameter("id")));
-
-        BookDao.update(book);
+                Integer.parseInt(req.getParameter("id"))));
         resp.sendRedirect("/all-books");
     }
 }

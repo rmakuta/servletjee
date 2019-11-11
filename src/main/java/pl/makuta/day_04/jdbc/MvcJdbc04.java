@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/search-book")
 public class MvcJdbc04 extends HttpServlet {
@@ -29,7 +31,26 @@ public class MvcJdbc04 extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
 
-        Book book = BookDao.read(Integer.parseInt(req.getParameter("id")));
-        resp.getWriter().print("id: " + book.getId() + ", tytuł: " + book.getTitle() + ", autor: " + book.getAuthor() + ", ISBN: " + book.getIsbn());
+        String search = req.getParameter("search");
+        boolean contains = false;
+
+        if(search.length() < 1){
+            resp.sendRedirect("all-books");
+        }else {
+            List<Book> books = BookDao.findAll();
+            List<Book> searchBooks = new ArrayList<>();
+            for (Book b: books){
+                if(b.getTitle().contains(search)){
+                    searchBooks.add(b);
+                    contains = true;
+                }
+            }
+            if(contains){
+                req.setAttribute("books", searchBooks);
+                getServletContext().getRequestDispatcher("/jdbc/search-books.jsp").forward(req, resp);
+            }else {
+                resp.sendRedirect("all-books?isTitle=false");
+            }
+        }
     }
 }
