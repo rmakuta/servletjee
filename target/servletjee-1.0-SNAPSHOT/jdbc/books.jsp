@@ -14,17 +14,19 @@
 <body>
 <table>
     <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>ISBN</th>
+        <th>|   ID  |</th>
+        <th>|   Title  |</th>
+        <th>|  Author  |</th>
+        <th>|  ISBN  |</th>
+        <th>|   |</th>
     </tr>
     <c:forEach items="${books}" var="book">
         <tr>
-            <td>${book.id}</td>
-            <td>${book.title}</td>
-            <td>${book.author}</td>
-            <td>${book.isbn}</td>
+            <td>|  ${book.id}  |</td>
+            <td>|  ${book.title}  |</td>
+            <td>|  ${book.author}  |</td>
+            <td>|  ${book.isbn}  |</td>
+            <td>| <a href="/delete-book?id=${book.id}" methods="">Usuń</a>   <a href="edit-book?id=${book.id}">Edytuj</a> |</td>
         </tr>
     </c:forEach>
 </table>
